@@ -28,4 +28,24 @@ public class ProductsController {
     public Result add(@RequestBody Product product){
         return this.productService.add(product);
     }
+
+    @GetMapping("/getByProductName")
+    public DataResult<Product> getByProductName(@RequestParam String productName){
+        return this.productService.getByProductName(productName);
+    }
+
+    @GetMapping("/getByProductNameAndCategoryId")
+    public DataResult<Product> getByProductNameAndCategoryId(@RequestParam String productName,@RequestParam int categoryId){
+        return this.productService.getByProductNameAndCategoryId(productName,categoryId);
+    }
+
+    @GetMapping("/getAllByPage")
+    public DataResult<List<Product>> getAllByPage(@RequestParam int page,@RequestParam int size){
+        return this.productService.getAll(page,size);
+    }
+
+    @GetMapping("/getAllSorted")
+    public DataResult<List<Product>> getAllSorted(){
+        return this.productService.getAllSorted();
+    }
 }
